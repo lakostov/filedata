@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Text.RegularExpressions;
 using FileData;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ThirdPartyTools;
@@ -17,7 +18,7 @@ namespace FileDataTest
         {
             var result = CommandProcessor.getFileDetails(new FileDetails(), args);
 
-            Assert.IsInstanceOfType(result, typeof(string));
+            StringAssert.Matches(result, new Regex(@"^(\d+\.)?(\d+\.)?(\d+)$"));
         }
 
         [TestMethod]
